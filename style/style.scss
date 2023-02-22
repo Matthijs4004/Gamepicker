@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend', sans-serif;
+}
+
+body {
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+
+        header {
+            display: flex;
+            padding: 20px 0;
+            margin-bottom: 10px;
+            justify-content: space-between;
+            border-bottom: 1px solid black;
+
+            #filter {
+                &-genre {
+                    padding: 10px;
+                    width: 20%;
+                    border-radius: 10px;
+                    border: 2px solid black;
+                    background-color: white;
+                }
+                &-price {
+                    padding: 10px;
+                    width: 20%;
+                    border-radius: 10px;
+                    border: 2px solid black;
+                }
+            }
+        }
+        &__overview {
+            .list-items {
+                .list-item {
+                    list-style: none;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px;
+                    border-radius: 10px;
+                    border: 1px solid black;
+                    margin-bottom: 10px;
+
+                    &__input {
+                        width: 10%;
+                        padding: 10px;
+                    }
+                    &__checkbox {
+                        width: 100%;
+                        height: 100%;
+                        text-align: left;
+                    }
+                    &__content {
+                        display: flex;
+                        width: 90%;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding-right: 40px;
+                    }
+                }
+            }
+            &-button {
+                display: flex;
+                padding: 20px 0;
+                justify-content: flex-end;
+                border-top: 1px solid black;
+                
+                button {
+                    padding: 10px;
+                    background-color: white;
+                    border-radius: 10px;
+                    border: 2px solid black;
+                }
+            }
+        }
+        &__cart {
+
+        }
+    }
+}
