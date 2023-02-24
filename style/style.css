@@ -34,6 +34,7 @@ body .container__overview .list-items .list-item {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  padding-right: 15px;
   border-radius: 10px;
   border: 1px solid black;
   margin-bottom: 10px;
@@ -49,10 +50,32 @@ body .container__overview .list-items .list-item__checkbox {
 }
 body .container__overview .list-items .list-item__content {
   display: flex;
-  width: 90%;
+  flex-direction: column;
+  width: 75%;
+}
+body .container__overview .list-items .list-item__content-top {
+  width: 100%;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: 40px;
+}
+body .container__overview .list-items .list-item__content-bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+body .container__overview .list-items .list-item__genre {
+  width: 50%;
+}
+body .container__overview .list-items .list-item__rating {
+  width: 50%;
+}
+body .container__overview .list-items .list-item__price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
 }
 body .container__overview-button {
   display: flex;

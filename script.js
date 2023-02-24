@@ -213,23 +213,57 @@ function createListItem( gameArray )
     content.classList.add( 'list-item__content' )
     li.appendChild( content )
 
+    let contentTop = document.createElement( 'div' )
+    contentTop.classList.add( 'list-item__content-top' )
+    content.appendChild( contentTop )
+
     let name = document.createElement( 'p' )
     name.classList.add( 'list-item__name' )
     name.innerText = gameArray[ 'title' ]
-    content.appendChild( name )
+    contentTop.appendChild( name )
+
+    let contentBottom = document.createElement( 'div' )
+    contentBottom.classList.add( 'list-item__content-bottom' )
+    content.appendChild( contentBottom )
+
+    let genre = document.createElement( 'p' )
+    genre.classList.add( 'list-item__genre' )
+    genre.innerText = "Genre: " + gameArray[ 'genre' ]
+    contentBottom.appendChild( genre )
+    
+    let rating = document.createElement( 'p' )
+    rating.classList.add( 'list-item__rating' )
+    rating.innerText = "Rating: " + gameArray[ 'rating' ]
+    contentBottom.appendChild( rating )
 
     let price = document.createElement( 'p' )
-    price.classList.add( 'list-item__name' )
+    price.classList.add( 'list-item__price' )
     if ( gameArray[ 'price' ] === 0 ) {
         price.innerText = "FREE"
     } else {
         price.innerText =  "$" + gameArray[ 'price' ].toString().split( "." ).join( "," )
     }
-    content.appendChild( price )
+    li.appendChild( price )
 
     let ul = document.querySelector( '.list-items' )
     ul.appendChild( li )
 }
+/*
+<li class="list-item">
+    <div class="list-item__content">
+        <div class="list-item__content-top">
+            <p class="list-item__name">Elden Ring</p>
+        </div>
+        <div class="list-item__content-bottom">
+            <p class="list-item__genre">Genre: RPG</p>
+            <p class="list-item__rating">Rating: 5</p>
+        </div>
+    </div>
+    <p class="list-item__price">$59,99</p>
+</li>
+*/
+
+
 
 window.addEventListener("DOMContentLoaded", (event) => {
 for ( const game of games ) {   
