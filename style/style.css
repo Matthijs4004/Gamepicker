@@ -35,7 +35,7 @@ body .container header #filter-price {
   background-color: #222222;
   color: white;
 }
-body .container__overview .list-items .list-item, body .container__overview .cart-items .list-item, body .container__cart .list-items .list-item, body .container__cart .cart-items .list-item {
+body .container__overview .list-items .list-item, body .container__overview .list-items .cart-item, body .container__overview .cart-items .list-item, body .container__overview .cart-items .cart-item, body .container__cart .list-items .list-item, body .container__cart .list-items .cart-item, body .container__cart .cart-items .list-item, body .container__cart .cart-items .cart-item {
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -46,12 +46,12 @@ body .container__overview .list-items .list-item, body .container__overview .car
   margin-bottom: 10px;
   color: white;
 }
-body .container__overview .list-items .list-item__input, body .container__overview .cart-items .list-item__input, body .container__cart .list-items .list-item__input, body .container__cart .cart-items .list-item__input {
+body .container__overview .list-items .list-item__input, body .container__overview .list-items .cart-item__input, body .container__overview .cart-items .list-item__input, body .container__overview .cart-items .cart-item__input, body .container__cart .list-items .list-item__input, body .container__cart .list-items .cart-item__input, body .container__cart .cart-items .list-item__input, body .container__cart .cart-items .cart-item__input {
   width: 10%;
   display: flex;
   justify-content: center;
 }
-body .container__overview .list-items .list-item__button, body .container__overview .cart-items .list-item__button, body .container__cart .list-items .list-item__button, body .container__cart .cart-items .list-item__button {
+body .container__overview .list-items .list-item__button, body .container__overview .list-items .cart-item__button, body .container__overview .cart-items .list-item__button, body .container__overview .cart-items .cart-item__button, body .container__cart .list-items .list-item__button, body .container__cart .list-items .cart-item__button, body .container__cart .cart-items .list-item__button, body .container__cart .cart-items .cart-item__button {
   text-align: center;
   padding: 0px;
   background: #222222;
@@ -65,30 +65,30 @@ body .container__overview .list-items .list-item__button, body .container__overv
   padding-bottom: 4px;
   cursor: pointer;
 }
-body .container__overview .list-items .list-item__content, body .container__overview .cart-items .list-item__content, body .container__cart .list-items .list-item__content, body .container__cart .cart-items .list-item__content {
+body .container__overview .list-items .list-item__content, body .container__overview .list-items .cart-item__content, body .container__overview .cart-items .list-item__content, body .container__overview .cart-items .cart-item__content, body .container__cart .list-items .list-item__content, body .container__cart .list-items .cart-item__content, body .container__cart .cart-items .list-item__content, body .container__cart .cart-items .cart-item__content {
   display: flex;
   flex-direction: column;
   width: 75%;
 }
-body .container__overview .list-items .list-item__content-top, body .container__overview .cart-items .list-item__content-top, body .container__cart .list-items .list-item__content-top, body .container__cart .cart-items .list-item__content-top {
+body .container__overview .list-items .list-item__content-top, body .container__overview .list-items .cart-item__content-top, body .container__overview .cart-items .list-item__content-top, body .container__overview .cart-items .cart-item__content-top, body .container__cart .list-items .list-item__content-top, body .container__cart .list-items .cart-item__content-top, body .container__cart .cart-items .list-item__content-top, body .container__cart .cart-items .cart-item__content-top {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-body .container__overview .list-items .list-item__content-bottom, body .container__overview .cart-items .list-item__content-bottom, body .container__cart .list-items .list-item__content-bottom, body .container__cart .cart-items .list-item__content-bottom {
+body .container__overview .list-items .list-item__content-bottom, body .container__overview .list-items .cart-item__content-bottom, body .container__overview .cart-items .list-item__content-bottom, body .container__overview .cart-items .cart-item__content-bottom, body .container__cart .list-items .list-item__content-bottom, body .container__cart .list-items .cart-item__content-bottom, body .container__cart .cart-items .list-item__content-bottom, body .container__cart .cart-items .cart-item__content-bottom {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 20px;
 }
-body .container__overview .list-items .list-item__genre, body .container__overview .cart-items .list-item__genre, body .container__cart .list-items .list-item__genre, body .container__cart .cart-items .list-item__genre {
+body .container__overview .list-items .list-item__genre, body .container__overview .list-items .cart-item__genre, body .container__overview .cart-items .list-item__genre, body .container__overview .cart-items .cart-item__genre, body .container__cart .list-items .list-item__genre, body .container__cart .list-items .cart-item__genre, body .container__cart .cart-items .list-item__genre, body .container__cart .cart-items .cart-item__genre {
   width: 50%;
 }
-body .container__overview .list-items .list-item__rating, body .container__overview .cart-items .list-item__rating, body .container__cart .list-items .list-item__rating, body .container__cart .cart-items .list-item__rating {
+body .container__overview .list-items .list-item__rating, body .container__overview .list-items .cart-item__rating, body .container__overview .cart-items .list-item__rating, body .container__overview .cart-items .cart-item__rating, body .container__cart .list-items .list-item__rating, body .container__cart .list-items .cart-item__rating, body .container__cart .cart-items .list-item__rating, body .container__cart .cart-items .cart-item__rating {
   width: 50%;
 }
-body .container__overview .list-items .list-item__price, body .container__overview .cart-items .list-item__price, body .container__cart .list-items .list-item__price, body .container__cart .cart-items .list-item__price {
+body .container__overview .list-items .list-item__price, body .container__overview .list-items .cart-item__price, body .container__overview .cart-items .list-item__price, body .container__overview .cart-items .cart-item__price, body .container__cart .list-items .list-item__price, body .container__cart .list-items .cart-item__price, body .container__cart .cart-items .list-item__price, body .container__cart .cart-items .cart-item__price {
   display: flex;
   justify-content: center;
   align-items: center;

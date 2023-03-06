@@ -193,70 +193,78 @@ var games = [
     }
 ]
 
-function createListItem( gameArray, index ) 
+function createItem( game, index, type ) 
 {
     let li = document.createElement( 'li' ) 
-    li.classList.add( 'list-item' )
+    li.classList.add( type + '-item' )
     li.classList.add( 'game' + index )
 
     let inputDiv = document.createElement( 'div' ) 
-    inputDiv.classList.add( 'list-item__input' )
+    inputDiv.classList.add( type + '-item__input' )
     li.appendChild( inputDiv )
 
-
     let input = document.createElement( 'button' )
-    input.classList.add( 'list-item__button' )
+    input.classList.add( type + '-item__button' )
     input.type = "checkbox"
     input.name = 'game' + index 
     input.id = 'game' + index
-    input.innerText = '+'
-    input.click = function() { /* function */ };
+
+    if ( type === 'cart' ) {
+        input.innerText = '-'
+        input.onclick = function() { 
+            let element = document.querySelector( '.cart-items .game' + index ) 
+            element.remove()
+        };
+    } else if ( type === 'list') {
+        input.innerText = '+'
+        input.onclick = function() { createItem( game, index, 'cart' ) };
+    }
     inputDiv.appendChild( input )
 
     let content = document.createElement( 'div' )
-    content.classList.add( 'list-item__content' )
+    content.classList.add( type + '-item__content' )
     li.appendChild( content )
 
     let contentTop = document.createElement( 'div' )
-    contentTop.classList.add( 'list-item__content-top' )
+    contentTop.classList.add( type + '-item__content-top' )
     content.appendChild( contentTop )
 
     let name = document.createElement( 'p' )
-    name.classList.add( 'list-item__name' )
-    name.innerText = gameArray[ 'title' ]
+    name.classList.add( type + '-item__name' )
+    name.innerText = game[ 'title' ]
     contentTop.appendChild( name )
 
     let contentBottom = document.createElement( 'div' )
-    contentBottom.classList.add( 'list-item__content-bottom' )
+    contentBottom.classList.add( type + '-item__content-bottom' )
     content.appendChild( contentBottom )
 
     let genre = document.createElement( 'p' )
-    genre.classList.add( 'list-item__genre' )
-    genre.innerText = "Genre: " + gameArray[ 'genre' ]
+    genre.classList.add( type + '-item__genre' )
+    genre.innerText = "Genre: " + game[ 'genre' ]
     contentBottom.appendChild( genre )
     
     let rating = document.createElement( 'p' )
-    rating.classList.add( 'list-item__rating' )
-    rating.innerText = "Rating: " + gameArray[ 'rating' ]
+    rating.classList.add( type + '-item__rating' )
+    rating.innerText = "Rating: " + game[ 'rating' ]
     contentBottom.appendChild( rating )
 
     let price = document.createElement( 'p' )
-    price.classList.add( 'list-item__price' )
-    if ( gameArray[ 'price' ] === 0 ) {
+    price.classList.add( type + '-item__price' )
+    if ( game[ 'price' ] === 0 ) {
         price.innerText = "FREE"
     } else {
-        price.innerText =  "$" + gameArray[ 'price' ].toString().split( "." ).join( "," )
+        price.innerText =  "$" + game[ 'price' ].toString().split( "." ).join( "," )
     }
     li.appendChild( price )
 
-    let ul = document.querySelector( '.list-items' )
+    let ul = document.querySelector( '.' + type + '-items' )
     ul.appendChild( li )
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
 
 for (const [index, game] of games.entries()) { 
-    createListItem( game, index )
+    createItem( game, index, 'list' )
 }
 
 });
