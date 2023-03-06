@@ -193,20 +193,24 @@ var games = [
     }
 ]
 
-function createListItem( gameArray ) 
+function createListItem( gameArray, index ) 
 {
     let li = document.createElement( 'li' ) 
     li.classList.add( 'list-item' )
+    li.classList.add( 'game' + index )
 
     let inputDiv = document.createElement( 'div' ) 
     inputDiv.classList.add( 'list-item__input' )
     li.appendChild( inputDiv )
 
-    let input = document.createElement( 'input' )
-    input.classList.add( 'list-item__checkbox' )
+
+    let input = document.createElement( 'button' )
+    input.classList.add( 'list-item__button' )
     input.type = "checkbox"
-    input.name = gameArray[ 'title' ].split( " " ).join( "-" )
-    input.id = gameArray[ 'title' ].split( " " ).join( "-" )
+    input.name = 'game' + index 
+    input.id = 'game' + index
+    input.innerText = '+'
+    input.click = function() { /* function */ };
     inputDiv.appendChild( input )
 
     let content = document.createElement( 'div' )
@@ -248,25 +252,12 @@ function createListItem( gameArray )
     let ul = document.querySelector( '.list-items' )
     ul.appendChild( li )
 }
-/*
-<li class="list-item">
-    <div class="list-item__content">
-        <div class="list-item__content-top">
-            <p class="list-item__name">Elden Ring</p>
-        </div>
-        <div class="list-item__content-bottom">
-            <p class="list-item__genre">Genre: RPG</p>
-            <p class="list-item__rating">Rating: 5</p>
-        </div>
-    </div>
-    <p class="list-item__price">$59,99</p>
-</li>
-*/
-
-
 
 window.addEventListener("DOMContentLoaded", (event) => {
-for ( const game of games ) {   
-    createListItem( game )
+
+for (const [index, game] of games.entries()) { 
+    createListItem( game, index )
 }
+
 });
+ 

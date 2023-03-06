@@ -5,6 +5,9 @@
   font-family: "Lexend", sans-serif;
 }
 
+body {
+  background-color: #222222;
+}
 body .container {
   max-width: 600px;
   margin: 0 auto;
@@ -14,78 +17,93 @@ body .container header {
   padding: 20px 0;
   margin-bottom: 10px;
   justify-content: space-between;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
 }
 body .container header #filter-genre {
   padding: 10px;
   width: 20%;
   border-radius: 10px;
-  border: 2px solid black;
-  background-color: white;
+  border: 2px solid white;
+  background-color: #222222;
+  color: white;
 }
 body .container header #filter-price {
   padding: 10px;
   width: 20%;
   border-radius: 10px;
-  border: 2px solid black;
+  border: 2px solid white;
+  background-color: #222222;
+  color: white;
 }
-body .container__overview .list-items .list-item {
+body .container__overview .list-items .list-item, body .container__overview .cart-items .list-item, body .container__cart .list-items .list-item, body .container__cart .cart-items .list-item {
   list-style: none;
   display: flex;
   justify-content: space-between;
   padding: 10px;
   padding-right: 15px;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid white;
   margin-bottom: 10px;
+  color: white;
 }
-body .container__overview .list-items .list-item__input {
+body .container__overview .list-items .list-item__input, body .container__overview .cart-items .list-item__input, body .container__cart .list-items .list-item__input, body .container__cart .cart-items .list-item__input {
   width: 10%;
-  padding: 10px;
+  display: flex;
+  justify-content: center;
 }
-body .container__overview .list-items .list-item__checkbox {
-  width: 100%;
-  height: 100%;
-  text-align: left;
+body .container__overview .list-items .list-item__button, body .container__overview .cart-items .list-item__button, body .container__cart .list-items .list-item__button, body .container__cart .cart-items .list-item__button {
+  text-align: center;
+  padding: 0px;
+  background: #222222;
+  color: white;
+  border: 0;
+  font-size: 25px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 4px;
+  cursor: pointer;
 }
-body .container__overview .list-items .list-item__content {
+body .container__overview .list-items .list-item__content, body .container__overview .cart-items .list-item__content, body .container__cart .list-items .list-item__content, body .container__cart .cart-items .list-item__content {
   display: flex;
   flex-direction: column;
   width: 75%;
 }
-body .container__overview .list-items .list-item__content-top {
+body .container__overview .list-items .list-item__content-top, body .container__overview .cart-items .list-item__content-top, body .container__cart .list-items .list-item__content-top, body .container__cart .cart-items .list-item__content-top {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-body .container__overview .list-items .list-item__content-bottom {
+body .container__overview .list-items .list-item__content-bottom, body .container__overview .cart-items .list-item__content-bottom, body .container__cart .list-items .list-item__content-bottom, body .container__cart .cart-items .list-item__content-bottom {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 20px;
 }
-body .container__overview .list-items .list-item__genre {
+body .container__overview .list-items .list-item__genre, body .container__overview .cart-items .list-item__genre, body .container__cart .list-items .list-item__genre, body .container__cart .cart-items .list-item__genre {
   width: 50%;
 }
-body .container__overview .list-items .list-item__rating {
+body .container__overview .list-items .list-item__rating, body .container__overview .cart-items .list-item__rating, body .container__cart .list-items .list-item__rating, body .container__cart .cart-items .list-item__rating {
   width: 50%;
 }
-body .container__overview .list-items .list-item__price {
+body .container__overview .list-items .list-item__price, body .container__overview .cart-items .list-item__price, body .container__cart .list-items .list-item__price, body .container__cart .cart-items .list-item__price {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 15%;
 }
-body .container__overview-button {
+body .container__overview-button, body .container__cart-button {
   display: flex;
   padding: 20px 0;
   justify-content: flex-end;
-  border-top: 1px solid black;
+  border-top: 1px solid white;
 }
-body .container__overview-button button {
+body .container__overview-button button, body .container__cart-button button {
   padding: 10px;
-  background-color: white;
+  background-color: #222222;
   border-radius: 10px;
-  border: 2px solid black;
+  border: 2px solid white;
+  color: white;
 }/*# sourceMappingURL=style.css.map */
