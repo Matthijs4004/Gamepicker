@@ -217,7 +217,10 @@ function createItem( game, index, type )
         };
     } else if ( type === 'list') {
         input.innerText = '+'
-        input.onclick = function() { createItem( game, index, 'cart' ) };
+        input.onclick = function() { 
+            popUp( this ) 
+            createItem( game, index, 'cart' )
+        };
     }
     inputDiv.appendChild( input )
 
@@ -257,11 +260,88 @@ function createItem( game, index, type )
     }
     li.appendChild( price )
 
+    let popup = document.createElement( 'div' )
+    popup.classList.add( 'popUp' )
+    let popUpText = document.createElement( 'p' )
+    popUpText.innerText = "Item has been added to your cart"
+    //popup.style.display = 'none'
+    popup.style.opacity = '0'
+    popup.appendChild( popUpText )
+    inputDiv.appendChild( popup )
+
     let ul = document.querySelector( '.' + type + '-items' )
     ul.appendChild( li )
 }
+function popUp( element ) 
+{
+    let popUp = element.parentElement.querySelector( '.popUp' )
+    popUp.style.opacity = '1'
+
+    setTimeout(
+        function() {
+            popUp.style.opacity = '0'
+        }, 2000);
+}
+
+function calculate() 
+{
+    let cartItems = document.querySelectorAll( '.cart-items .cart-item' )
+    
+    if ( cartItems.length !== 0 ) {
+        let totalPrice = 0
+        for ( const item of cartItems ) {
+            let price = item.querySelector( '.cart-item__price' ).innerText
+            if ( price === "FREE" ) {
+                price = "$0,00"
+            }
+            totalPrice += parseFloat( price.split( '$' )[1].split( ',' ).join( '.' ) )
+        }
+        totalPriceButton = document.getElementById( 'total-button' )
+        totalPriceButton.innerText = "Total: $" + totalPrice.toFixed(2)
+    }
+    hideAndShow()
+}
+
+function clearCart() 
+{
+    let cartItems = document.querySelector( '.cart-items' )
+    if ( cartItems != null) {
+    
+        let delChild = cartItems.lastChild;
+        while (delChild) {
+            cartItems.removeChild(delChild);
+            delChild = cartItems.lastChild;
+        }
+        totalPriceButton = document.getElementById( 'total-button' )
+        totalPriceButton.innerText = "Total: $0"
+    }
+}
+
+function hideAndShow()
+{
+    let headerCart = document.querySelector( '.header__cart' )
+    let headerOverview = document.querySelector( '.header__overview' )
+
+    let containerCart = document.querySelector( '.container__cart' )
+    let containerOverview = document.querySelector( '.container__overview' )
+
+    if ( headerCart.style.display == 'none' ) {
+        headerCart.style.display = 'flex'
+        containerCart.style.display = 'block'
+        headerOverview.style.display = 'none'
+        containerOverview.style.display = 'none'
+    } else {
+        headerCart.style.display = 'none'
+        containerCart.style.display = 'none'
+        headerOverview.style.display = 'flex'
+        containerOverview.style.display = 'block'
+    }
+}
 
 window.addEventListener("DOMContentLoaded", (event) => {
+
+document.querySelector( '.header__cart' ).style.display = 'none'
+document.querySelector( '.container__cart' ).style.display = 'none'
 
 for (const [index, game] of games.entries()) { 
     createItem( game, index, 'list' )

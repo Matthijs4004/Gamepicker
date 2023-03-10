@@ -11,20 +11,36 @@
 <body>
     <div class="container">
         <header>
-            <button id="filter-genre">Genres</button>
-            <input type="text" name="filter-price" id="filter-price" placeholder="Price">
+            <div class="header__overview">
+                <button id="filter-genre" onclick="">Genres</button>
+                <select name="filter-rating" id="filter-rating">
+                    <option value="" disabled selected>Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                <input type="text" name="filter-price" id="filter-price" placeholder="Price">
+            </div>
+            <div class="header__cart">
+                <h2>Cart</h2>
+                <button id="clear-button" onclick="clearCart()">Clear All</button>
+                <button id="back-button" onclick="hideAndShow()">Back</button>
+            </div>
         </header>
         <main>
             <div class="container__overview">
                 <ul class="list-items"></ul>
                 <div class="container__overview-button">
-                    <button onclick="">Bereken</button>
+                    <button onclick="calculate()">Calculate</button>
                 </div>
             </div>
             <div class="container__cart">
                 <ul class="cart-items"></ul>
+                <p class="cart-empty-text"></p>
                 <div class="container__cart-button">
-                    <button>Totaal</button>
+                    <button id="total-button">Total</button>
                 </div>
             </div>
         </main>

@@ -9,17 +9,21 @@ body {
   background-color: #222222;
 }
 body .container {
+  position: relative;
   max-width: 600px;
   margin: 0 auto;
 }
 body .container header {
-  display: flex;
+  width: 100%;
   padding: 20px 0;
-  margin-bottom: 10px;
-  justify-content: space-between;
   border-bottom: 1px solid white;
+  margin-bottom: 10px;
 }
-body .container header #filter-genre {
+body .container header .header__overview {
+  display: flex;
+  justify-content: space-between;
+}
+body .container header .header__overview #filter-genre {
   padding: 10px;
   width: 20%;
   border-radius: 10px;
@@ -27,9 +31,35 @@ body .container header #filter-genre {
   background-color: #222222;
   color: white;
 }
-body .container header #filter-price {
+body .container header .header__overview #filter-price, body .container header .header__overview #filter-rating {
   padding: 10px;
   width: 20%;
+  border-radius: 10px;
+  border: 2px solid white;
+  background-color: #222222;
+  color: white;
+}
+body .container header .header__cart {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: white;
+}
+body .container header .header__cart h2 {
+  width: 75%;
+}
+body .container header .header__cart #back-button {
+  padding: 10px;
+  width: 10%;
+  border-radius: 10px;
+  border: 2px solid white;
+  background-color: #222222;
+  color: white;
+}
+body .container header .header__cart #clear-button {
+  padding: 10px;
+  width: 15%;
+  margin-right: 10px;
   border-radius: 10px;
   border: 2px solid white;
   background-color: #222222;
@@ -50,6 +80,7 @@ body .container__overview .list-items .list-item__input, body .container__overvi
   width: 10%;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 body .container__overview .list-items .list-item__button, body .container__overview .list-items .cart-item__button, body .container__overview .cart-items .list-item__button, body .container__overview .cart-items .cart-item__button, body .container__cart .list-items .list-item__button, body .container__cart .list-items .cart-item__button, body .container__cart .cart-items .list-item__button, body .container__cart .cart-items .cart-item__button {
   text-align: center;
@@ -96,8 +127,9 @@ body .container__overview .list-items .list-item__price, body .container__overvi
 }
 body .container__overview-button, body .container__cart-button {
   display: flex;
-  padding: 20px 0;
   justify-content: flex-end;
+  width: 100%;
+  padding: 20px 0;
   border-top: 1px solid white;
 }
 body .container__overview-button button, body .container__cart-button button {
@@ -106,4 +138,21 @@ body .container__overview-button button, body .container__cart-button button {
   border-radius: 10px;
   border: 2px solid white;
   color: white;
+}
+body .container .popUp {
+  top: -30px;
+  left: -80px;
+  max-width: 400px;
+  width: 400px;
+  position: absolute;
+  display: flex;
+  transition: opacity 0.5s ease;
+}
+body .container .popUp p {
+  background: white;
+  color: #222222;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #222222;
+  font-size: 12px;
 }/*# sourceMappingURL=style.css.map */
