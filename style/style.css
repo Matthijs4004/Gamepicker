@@ -139,6 +139,13 @@ body .container__overview-button button, body .container__cart-button button {
   border: 2px solid white;
   color: white;
 }
+body .container__cart .cart-empty-text {
+  display: none;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  margin: 40px 0;
+}
 body .container .popUp {
   top: -30px;
   left: -80px;

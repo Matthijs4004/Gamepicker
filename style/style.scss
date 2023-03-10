@@ -150,7 +150,13 @@ body {
             }
         }
         &__cart {
-
+            .cart-empty-text {
+                display: none;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                margin: 40px 0;
+            }
         }
         .popUp {
             top: -30px;

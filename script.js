@@ -212,8 +212,9 @@ function createItem( game, index, type )
     if ( type === 'cart' ) {
         input.innerText = '-'
         input.onclick = function() { 
-            let element = document.querySelector( '.cart-items .game' + index ) 
+            let element = document.querySelector( '.cart-items .game' + index )
             element.remove()
+            calculate( 'cart' ) 
         };
     } else if ( type === 'list') {
         input.innerText = '+'
@@ -263,8 +264,6 @@ function createItem( game, index, type )
     let popup = document.createElement( 'div' )
     popup.classList.add( 'popUp' )
     let popUpText = document.createElement( 'p' )
-    popUpText.innerText = "Item has been added to your cart"
-    //popup.style.display = 'none'
     popup.style.opacity = '0'
     popup.appendChild( popUpText )
     inputDiv.appendChild( popup )
@@ -280,13 +279,14 @@ function popUp( element )
     setTimeout(
         function() {
             popUp.style.opacity = '0'
-        }, 2000);
+        }, 1000);
 }
 
-function calculate() 
+function calculate( type ) 
 {
     let cartItems = document.querySelectorAll( '.cart-items .cart-item' )
-    
+    let totalPriceButton = document.getElementById( 'total-button' )
+
     if ( cartItems.length !== 0 ) {
         let totalPrice = 0
         for ( const item of cartItems ) {
@@ -296,10 +296,25 @@ function calculate()
             }
             totalPrice += parseFloat( price.split( '$' )[1].split( ',' ).join( '.' ) )
         }
-        totalPriceButton = document.getElementById( 'total-button' )
-        totalPriceButton.innerText = "Total: $" + totalPrice.toFixed(2)
+        totalPriceButton.innerText = "Total: $" + totalPrice.toFixed(2).split( '.' ).join( ',' )
+    } else {
+        totalPriceButton.innerText = "Total: $0"
     }
-    hideAndShow()
+    if ( type != 'cart' ) {
+        hideAndShow()
+    }
+    checkIfCartIsClear()
+}
+
+function checkIfCartIsClear() 
+{
+    let cartItems = document.querySelector( '.cart-items' )
+    let cartEmptyText = document.querySelector( '.cart-empty-text' )
+    if ( cartItems.childElementCount == 0 ) {
+        cartEmptyText.style.display = 'block'
+    } else {
+        cartEmptyText.style.display = 'none'
+    }
 }
 
 function clearCart() 
@@ -312,9 +327,12 @@ function clearCart()
             cartItems.removeChild(delChild);
             delChild = cartItems.lastChild;
         }
-        totalPriceButton = document.getElementById( 'total-button' )
-        totalPriceButton.innerText = "Total: $0"
+        if ( cartItems.childElementCount != 0 ) {
+            totalPriceButton = document.getElementById( 'total-button' )
+            totalPriceButton.innerText = "Total: $0"
+        }
     }
+    checkIfCartIsClear()
 }
 
 function hideAndShow()
