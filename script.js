@@ -264,6 +264,7 @@ function createItem( game, index, type )
     let popup = document.createElement( 'div' )
     popup.classList.add( 'popUp' )
     let popUpText = document.createElement( 'p' )
+    popUpText.innerText = "Item has been added to your cart"
     popup.style.opacity = '0'
     popup.appendChild( popUpText )
     inputDiv.appendChild( popup )
