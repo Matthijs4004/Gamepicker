@@ -12,16 +12,18 @@
     <div class="container">
         <header>
             <div class="header__overview">
-                <button id="filter-genre" onclick="">Genres</button>
-                <select name="filter-rating" id="filter-rating">
-                    <option value="" disabled selected>Rating</option>
+                <select name="filter-genre" id="filter-genre" onchange="filter()">
+                    <option value="" selected>All Genres</option>
+                </select>
+                <select name="filter-rating" id="filter-rating" onchange="filter()">
+                    <option value="" selected>All Ratings</option>
                     <option value="1">1</option>
                     <option value="2">2 >=</option>
                     <option value="3">3 >=</option>
                     <option value="4">4 >=</option>
                     <option value="5">5 >=</option>
                   </select>
-                <input type="text" name="filter-price" id="filter-price" placeholder="Price">
+                <input type="text" name="filter-price" id="filter-price" placeholder="Price ex. 10,00" onchange="filter()">
             </div>
             <div class="header__cart">
                 <h2>Cart</h2>
@@ -32,6 +34,7 @@
         <main>
             <div class="container__overview">
                 <ul class="list-items"></ul>
+                <p class="overview-empty-text">No games match these filter settings</p>
                 <div class="container__overview-button">
                     <button onclick="calculate()">Calculate</button>
                 </div>

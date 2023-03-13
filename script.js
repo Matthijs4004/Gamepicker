@@ -306,6 +306,23 @@ function calculate( type )
     checkIfCartIsClear()
 }
 
+function checkIfOverviewIsClear() {
+    let listItems = document.querySelectorAll( '.list-item' )
+    let listEmptyText = document.querySelector( '.overview-empty-text' )
+    let i = 0
+    for ( const item of listItems ) {
+        if ( item.style.display == 'none' || item.style.display == '' ) {
+            i += 1
+        }
+    }
+    console.log( i )
+    if ( i == listItems.length ) {
+        listEmptyText.style.display = 'block'
+    } else {
+        listEmptyText.style.display = 'none'
+    }
+}
+
 function checkIfCartIsClear() 
 {
     let cartItems = document.querySelector( '.cart-items' )
@@ -356,6 +373,78 @@ function hideAndShow()
     }
 }
 
+function createOptionsGenreFilter( games ) 
+{
+    let genreArray = []
+    for ( const [index, game] of games.entries()) {
+        i = 0
+        if ( genreArray.length === 0) {
+            genreArray.push( game['genre'] ) 
+        }
+        for ( const genre of genreArray ) {
+            if ( genre === game[ 'genre' ] ) {
+                i += 1
+            }
+        }
+        if ( i === 0 ) {
+            genreArray.push( game['genre'] )
+        }
+    }
+
+    let genreSelect = document.querySelector( '#filter-genre' )
+    for ( const genre of genreArray ) {
+        let option = document.createElement( 'option' )
+        option.value = genre.toLowerCase()
+        option.innerText = genre
+        option.classList.add( 'filter-option__' + genre.toLowerCase() )
+        genreSelect.appendChild( option )
+    }
+    console.log( genreArray )
+}
+
+function filter() {
+    let genreSelect = document.querySelector( '#filter-genre' )
+    let ratingSelect = document.querySelector( '#filter-rating' )
+    let priceFilter = document.querySelector( '#filter-price' )
+    let listItems = document.querySelector( '.list-items' )
+    const selectedGenre = genreSelect.value
+    const selectedRating = ratingSelect.value
+    const maxPrice = priceFilter.value
+
+    for ( let game of listItems.children ) {
+        const genre = game.querySelector( '.list-item__genre' ).innerText.split( " " )[1].toLowerCase()
+        const rating = game.querySelector( '.list-item__rating' ).innerText.split( " " )[1]
+        let price = game.querySelector( '.list-item__price' ).innerText
+        if ( price == "FREE" ) {
+            price = 0.00
+        } else {
+            price = parseFloat( game.querySelector( '.list-item__price' ).innerText.split( "$" )[1].split( "," ).join( "." ) );
+        }
+    
+        let shouldShow = false;
+        let genreMatched = false;
+    
+        if (selectedGenre === "" || selectedGenre === genre) {
+            genreMatched = true;
+        }
+    
+        if (selectedRating === "" || (rating !== "" && rating <= selectedRating)) {
+            shouldShow = true;
+        }
+    
+        if (maxPrice && price > parseFloat(maxPrice)) {
+            shouldShow = false;
+        }
+    
+        if (shouldShow && genreMatched) {
+            game.style.display = 'flex';
+        } else {
+            game.style.display = 'none';
+        }
+    }
+    checkIfOverviewIsClear()
+}
+
 window.addEventListener("DOMContentLoaded", (event) => {
 
 document.querySelector( '.header__cart' ).style.display = 'none'
@@ -364,6 +453,7 @@ document.querySelector( '.container__cart' ).style.display = 'none'
 for (const [index, game] of games.entries()) { 
     createItem( game, index, 'list' )
 }
+createOptionsGenreFilter( games )
 
 });
  
