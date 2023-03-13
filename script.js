@@ -193,6 +193,7 @@ var games = [
     }
 ]
 
+// Creates the games items for the overview and the cart based on what the type is
 function createItem( game, index, type ) 
 {
     let li = document.createElement( 'li' ) 
@@ -272,6 +273,8 @@ function createItem( game, index, type )
     let ul = document.querySelector( '.' + type + '-items' )
     ul.appendChild( li )
 }
+
+// This function shows the popup when the user adds a game to the cart
 function popUp( element ) 
 {
     let popUp = element.parentElement.querySelector( '.popUp' )
@@ -283,6 +286,7 @@ function popUp( element )
         }, 1000);
 }
 
+// This function calculates the total price for all the items in the cart.
 function calculate( type ) 
 {
     let cartItems = document.querySelectorAll( '.cart-items .cart-item' )
@@ -307,6 +311,7 @@ function calculate( type )
     checkIfCartIsClear()
 }
 
+// This function checks if the overview is clear and then shows text to let the user know that the filter settings do not match with any game
 function checkIfOverviewIsClear() {
     let listItems = document.querySelectorAll( '.list-item' )
     let listEmptyText = document.querySelector( '.overview-empty-text' )
@@ -324,6 +329,7 @@ function checkIfOverviewIsClear() {
     }
 }
 
+// This function checks if the cart is clear and then shows text to let the user know that the cart is empty
 function checkIfCartIsClear() 
 {
     let cartItems = document.querySelector( '.cart-items' )
@@ -335,6 +341,7 @@ function checkIfCartIsClear()
     }
 }
 
+// This function clears all of the items in the cart when the button is pressed
 function clearCart() 
 {
     let cartItems = document.querySelector( '.cart-items' )
@@ -353,6 +360,7 @@ function clearCart()
     checkIfCartIsClear()
 }
 
+// This function is in charge of the visibility of the cart and overview, so when the overview is visible the cart is not and reversed aswell
 function hideAndShow()
 {
     let headerCart = document.querySelector( '.header__cart' )
@@ -374,6 +382,7 @@ function hideAndShow()
     }
 }
 
+// This function dynamically creates the options that you can pick from in the genre filter
 function createOptionsGenreFilter( games ) 
 {
     let genreArray = []
@@ -403,6 +412,7 @@ function createOptionsGenreFilter( games )
     console.log( genreArray )
 }
 
+// This function is for filtering the price, rating and genre for all games.
 function filter() {
     let genreSelect = document.querySelector( '#filter-genre' )
     let ratingSelect = document.querySelector( '#filter-rating' )
@@ -446,6 +456,7 @@ function filter() {
     checkIfOverviewIsClear()
 }
 
+// The part below is for executing the all the necessary functions for the page and making sure its correctly loaded
 window.addEventListener("DOMContentLoaded", (event) => {
 
 document.querySelector( '.header__cart' ).style.display = 'none'
